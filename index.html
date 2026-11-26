@@ -11,21 +11,21 @@
 /* VOICE: ambiance cyber demandée : terminal, centre de supervision, nuit.
    IDEA: la page se lit comme la console d'un SOC : invite de commande, grille, voyants.
    PICTURE: la scène SVG du service informatique, redessinée en néon sur fond noir.
-   COLOUR and TYPE: noir #05090b, vert néon #00ff9c, cyan #22d3ee ; JetBrains Mono pour les titres, Inter pour le texte.
+   COLOUR and TYPE: noir #05090b, bleu clair #4cc9ff, bleu pâle #9ad8ff ; JetBrains Mono pour les titres, Inter pour le texte.
    LAYOUT: un seul thème sombre, quel que soit le réglage du lecteur. */
 :root,:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark;
-  --bg:#05090b;--ink:#d8f7e6;--muted:#86a395;--red:#00ff9c;--slate:#22d3ee;--panel:#0a1316;
-  --line:#173033;--card:#071012;--dev:#1d3a3c;--on:#00170d}
+  --bg:#050a10;--ink:#e0efff;--muted:#8ca3bd;--red:#4cc9ff;--slate:#9ad8ff;--panel:#0a121b;
+  --line:#172a3d;--card:#070f17;--dev:#1d3349;--on:#001626}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:clip;
-  background-image:linear-gradient(rgba(0,255,156,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,156,.035) 1px,transparent 1px);background-size:32px 32px}
+  background-image:linear-gradient(rgba(76,201,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(76,201,255,.035) 1px,transparent 1px);background-size:32px 32px}
 h1,h2,h3{font-family:"JetBrains Mono",ui-monospace,monospace;line-height:1.12;text-wrap:balance;margin:0}
-h1{text-shadow:0 0 24px rgba(0,255,156,.35)}
+h1{text-shadow:0 0 24px rgba(76,201,255,.35)}
 .prompt{font-family:"JetBrains Mono",monospace;color:var(--slate);font-size:15px;margin-bottom:10px}
 .prompt b{color:var(--red);font-weight:600}
 .cur{display:inline-block;width:.6em;height:1.05em;background:var(--red);vertical-align:-3px;margin-left:4px}
-.btn.p{box-shadow:0 0 18px rgba(0,255,156,.35)}
+.btn.p{box-shadow:0 0 18px rgba(76,201,255,.35)}
 .panel,.act{border:1px solid var(--line)}
 .act:hover{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
 p{margin:0;max-width:68ch}
@@ -102,7 +102,7 @@ tr:last-child td{border-bottom:0}
 table.e5{min-width:1000px}
 table.e5 th:first-child,table.e5 td:first-child{width:38%}
 table.e5 td.per{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--slate);white-space:nowrap}
-table.e5 tr.grp td{background:#0d1d20;color:var(--red);font-family:"JetBrains Mono",monospace;font-weight:600;font-size:13px;text-align:left;border-top:1px solid var(--red)}
+table.e5 tr.grp td{background:#0b1a28;color:var(--red);font-family:"JetBrains Mono",monospace;font-weight:600;font-size:13px;text-align:left;border-top:1px solid var(--red)}
 table.e5 td:first-child{font-size:14px;line-height:1.45}
 .comp{margin-top:24px;border:1px solid var(--line);background:var(--card);border-radius:2px}
 .comp summary{cursor:pointer;padding:14px 18px;min-height:44px;font-weight:600;color:var(--red)}
