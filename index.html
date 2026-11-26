@@ -140,6 +140,8 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 .tl time{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--slate);padding-top:2px;white-space:nowrap}
 .tl b{display:block;margin-bottom:2px}.tl p{font-size:15px;color:var(--muted)}
 @media(max-width:600px){.vhero{grid-template-columns:minmax(0,1fr)}.idlogo{width:96px;height:96px}.tl li{grid-template-columns:minmax(0,1fr);gap:2px}}
+.mhead{display:flex;align-items:center;gap:14px;margin-bottom:10px}.mhead h3{margin:0}
+.mhead img{width:96px;height:72px;object-fit:cover;border-radius:2px;border:1px solid var(--line);flex:none}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -248,7 +250,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         </ul>
       </div>
       <div class="panel">
-        <h3>Mairie de Gennevilliers</h3>
+        <div class="mhead"><img src="Mairie_de_Gennevilliers.jpeg" alt="Hôtel de ville de Gennevilliers" onerror="this.remove()"><h3>Mairie de Gennevilliers</h3></div>
         <p>Commune des Hauts-de-Seine, la mairie assure les démarches administratives et les services municipaux pour ses habitants. Son service informatique équipe et accompagne l'ensemble des agents de la ville.</p>
         <div class="figs">
           <div><strong>≈ 51 000</strong>habitants</div>
