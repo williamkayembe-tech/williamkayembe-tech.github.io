@@ -167,6 +167,15 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 .pdate{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);white-space:nowrap}
 .proj h3{font-size:1.2rem}.proj p{color:var(--muted);font-size:15px}
 .ptags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.pbig{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,3vw,36px)}
+.pbhead h3{font-size:clamp(1.4rem,3vw,1.9rem);margin:8px 0 14px}
+.pbig h4{margin:28px 0 10px;font-family:"JetBrains Mono",monospace;font-size:15px;color:var(--red);font-weight:600}
+.pbig p+p{margin-top:12px}.pbig p{color:var(--muted)}
+.pbcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(20px,3vw,40px)}
+.steps2{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;counter-reset:st}
+.steps2 li{counter-increment:st;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 16px 16px 56px;position:relative}
+.steps2 li::before{content:counter(st);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;border:1px solid var(--red);color:var(--red);font:600 14px "JetBrains Mono",monospace;display:grid;place-items:center}
+.steps2 b{display:block;margin-bottom:2px}.steps2 span{font-size:14px;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -393,8 +402,58 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section class="band" id="projets">
   <div class="wrap">
-    <div class="head"><h2>Projets</h2></div>
-    <p class="legend">Section en cours de construction.</p>
+    <div class="head"><h2>Projets</h2><p>Projets menés à la DSI de la mairie de Gennevilliers</p></div>
+
+    <article class="pbig">
+      <div class="pbhead">
+        <span class="pcat">Projet 1 · 2025-2026</span>
+        <h3>Enrôlement des postes enseignants des écoles de Gennevilliers</h3>
+        <div class="ptags"><span class="tag">Microsoft Entra ID</span><span class="tag">Microsoft Intune</span><span class="tag">Déploiement</span><span class="tag">Gestion de parc</span></div>
+      </div>
+
+      <div class="pbcols">
+        <div>
+          <h4>Contexte</h4>
+          <p>La DSI équipe les enseignants des écoles maternelles et élémentaires de la ville en ordinateurs portables. Pour que chaque poste soit sécurisé, géré à distance et prêt à l'emploi, il doit être configuré puis enrôlé dans l'environnement Microsoft de la ville avant d'être remis à son enseignant.</p>
+          <p>Avec un collègue de la DSI, nous avons déployé les postes école par école, tout au long de l'année scolaire. Il disposait de la liste des enseignants de chaque école, ce qui nous permettait de savoir à quel enseignant attribuer chaque ordinateur.</p>
+        </div>
+        <div>
+          <h4>Déploiement école par école</h4>
+          <ol class="tl">
+            <li><time>Septembre 2025</time><div><b>École Henri Wallon</b><p>12 postes enrôlés</p></div></li>
+            <li><time>Octobre 2025</time><div><b>École Paul Langevin</b><p>15 postes enrôlés</p></div></li>
+            <li><time>Décembre 2025</time><div><b>École Diderot</b></div></li>
+            <li><time>Janvier 2026</time><div><b>École Joliot-Curie</b></div></li>
+            <li><time>Février 2026</time><div><b>École Aubrac</b></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <h4>Les étapes, pour chaque poste</h4>
+      <ol class="steps2">
+        <li><b>Sortie du stock</b><span>Récupération des ordinateurs portables dans le stock de la DSI.</span></li>
+        <li><b>Configuration du poste</b><span>Démarrage et préparation de l'ordinateur, activation du compte administrateur local.</span></li>
+        <li><b>Connexion au Wi-Fi</b><span>Configuration du réseau sans fil pour que le poste fonctionne dans l'école.</span></li>
+        <li><b>Installation de l'imprimante</b><span>Ajout de l'imprimante de l'école concernée.</span></li>
+        <li><b>Enrôlement</b><span>Inscription du poste dans Microsoft Entra ID et Intune, qui appliquent les stratégies de configuration et de conformité de la ville.</span></li>
+        <li><b>Attribution</b><span>Association du poste à son enseignant grâce à la liste de l'école, puis remise du matériel.</span></li>
+      </ol>
+
+      <div class="pbcols" style="margin-top:28px">
+        <div class="panel">
+          <h4 style="margin-top:0">Compétences mobilisées</h4>
+          <ul class="facts">
+            <li><b>Patrimoine</b><span>Gérer le patrimoine informatique : inventaire et attribution des postes</span></li>
+            <li><b>Service</b><span>Mettre à disposition des utilisateurs un service informatique</span></li>
+            <li><b>Projet</b><span>Travailler en mode projet : planification école par école</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4 style="margin-top:0">Ce que j'en retiens</h4>
+          <p>Ce projet m'a appris à suivre une procédure rigoureuse et identique pour chaque poste, et à m'organiser avec mon collègue pour livrer une école entière à la fois. Il m'a aussi fait découvrir concrètement Microsoft Entra ID et Intune, le sujet que j'ai choisi pour ma veille technologique.</p>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
