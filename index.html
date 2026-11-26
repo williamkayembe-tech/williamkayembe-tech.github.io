@@ -142,6 +142,11 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 @media(max-width:600px){.vhero{grid-template-columns:minmax(0,1fr)}.idlogo{width:96px;height:96px}.tl li{grid-template-columns:minmax(0,1fr);gap:2px}}
 .mhead{display:flex;align-items:center;gap:14px;margin-bottom:10px}.mhead h3{margin:0}
 .mhead img{width:96px;height:72px;object-fit:cover;border-radius:2px;border:1px solid var(--line);flex:none}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(20px,3vw,32px);margin-top:clamp(20px,3vw,32px)}
+.org p+p{margin-top:12px}.org .lede{color:var(--ink);font-weight:500;margin-bottom:12px}
+.org h4{margin:24px 0 4px;font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--red);font-weight:600}
+.org .figs{margin:4px 0 16px}
+.banner{display:block;width:calc(100% + 48px);margin:-24px -24px 20px;height:200px;object-fit:cover;border-bottom:1px solid var(--line)}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -234,29 +239,49 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section class="band">
   <div class="wrap">
     <div class="head"><h2>Présentation</h2><p>Mon parcours, mon école, mon entreprise</p></div>
-    <div class="cols">
-      <div class="panel">
-        <h3>Qui je suis</h3>
-        <p>Je prépare le BTS Services Informatiques aux Organisations, option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), en alternance.</p>
-        <p>Au sein du pôle support utilisateurs, j'assure l'assistance technique des agents, je prépare les postes de travail et je gère les comptes dans l'Active Directory. J'interviens aussi ponctuellement sur l'infrastructure et l'audiovisuel.</p>
-      </div>
-      <div class="panel">
+    <div class="panel">
+      <h3>Qui je suis</h3>
+      <p>Je m'appelle <strong>William Kayembe</strong> et j'ai 20 ans. Je prépare le BTS Services Informatiques aux Organisations, option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), à Schola Nova.</p>
+      <p>En parallèle de ma formation, je suis <strong>alternant technicien informatique au sein de la mairie de Gennevilliers</strong>, à la Direction des Systèmes d'Information. Je partage mon temps entre les cours et l'entreprise, ce qui me permet d'appliquer directement sur le terrain ce que j'apprends à l'école.</p>
+      <p>Au sein du pôle support utilisateurs, j'assure l'assistance technique des agents, je prépare les postes de travail et je gère les comptes dans l'Active Directory. J'interviens aussi ponctuellement sur l'infrastructure et l'audiovisuel.</p>
+    </div>
+    <div class="duo">
+      <article class="panel org">
         <h3>Schola Nova</h3>
-        <p>École située dans le 19<sup>e</sup> arrondissement de Paris, qui accueille des étudiants après le bac. Elle propose des formations en commerce, gestion et informatique, prépare aux BTS et bachelors, et accompagne ses étudiants dans la recherche d'une entreprise d'alternance.</p>
+        <p class="lede">Mon école : un centre de formation en alternance installé sur les quais de Seine, au 51 quai de la Seine, dans le 19<sup>e</sup> arrondissement de Paris.</p>
+        <p>Schola Nova se présente comme une école sociale et solidaire qui met l'humain au cœur de son projet. Elle a fait le choix de placer la pratique au centre de ses formations : tous ses BTS se préparent en alternance, avec des intervenants issus du monde de l'entreprise. Les formations suivies en alternance sont gratuites pour les étudiants.</p>
+        <p>L'école recrute sans prérequis, sur la cohérence du projet, puis accompagne chaque étudiant dans sa recherche d'entreprise : travail du CV, préparation aux entretiens, et un chargé de relations entreprises qui suit l'apprenti pendant toute sa formation.</p>
+        <h4>Les formations</h4>
+        <ul class="facts">
+          <li><b>Informatique</b><span>BTS SIO (SISR), BTS CIEL, titre Technicien supérieur systèmes et réseaux</span></li>
+          <li><b>Après le BTS</b><span>Bachelors Administrateur d'infrastructures sécurisées et Responsable de projets informatiques – Réseaux</span></li>
+          <li><b>Commerce et gestion</b><span>BTS MCO, NDRC, SAM, Assistant de gestion, Commerce international</span></li>
+        </ul>
+        <h4>Mon BTS SIO option SISR</h4>
         <ul class="facts">
           <li><b>Bloc 1</b><span>Support et mise à disposition de services informatiques</span></li>
           <li><b>Bloc 2</b><span>Administration des systèmes et des réseaux</span></li>
           <li><b>Bloc 3</b><span>Cybersécurité des services informatiques</span></li>
         </ul>
-      </div>
-      <div class="panel">
-        <div class="mhead"><img src="Mairie_de_Gennevilliers.jpeg" alt="Hôtel de ville de Gennevilliers" onerror="this.remove()"><h3>Mairie de Gennevilliers</h3></div>
-        <p>Commune des Hauts-de-Seine, la mairie assure les démarches administratives et les services municipaux pour ses habitants. Son service informatique équipe et accompagne l'ensemble des agents de la ville.</p>
+      </article>
+      <article class="panel org">
+        <img class="banner" src="Mairie_de_Gennevilliers.jpeg" alt="Hôtel de ville de Gennevilliers" onerror="this.remove()">
+        <h3>Mairie de Gennevilliers</h3>
+        <p class="lede">Mon entreprise d'accueil : la Ville de Gennevilliers, commune des Hauts-de-Seine située à environ 9 km du centre de Paris.</p>
         <div class="figs">
           <div><strong>≈ 51 000</strong>habitants</div>
           <div><strong>≈ 2 000</strong>agents</div>
+          <div><strong>45</strong>élus au conseil</div>
         </div>
-      </div>
+        <p>Gennevilliers accueille le premier port fluvial de France et compte environ 41 000 emplois sur son territoire, ce qui en fait un pôle économique important du nord-ouest parisien. La ville fait partie de l'établissement public territorial Boucle Nord de Seine, au sein de la Métropole du Grand Paris.</p>
+        <p>L'hôtel de ville, achevé en 1977, se trouve au 177 avenue Gabriel-Péri. Il accueille les habitants pour leurs démarches et regroupe une grande partie des directions municipales. Le maire est Patrice Leclerc, réélu en mars 2026.</p>
+        <h4>La Direction des Systèmes d'Information</h4>
+        <p>La DSI équipe et accompagne les agents de tous les services municipaux : postes de travail, comptes et accès, réseau, téléphonie, applications métiers. Elle intervient aussi dans les écoles de la ville, où elle déploie et suit le matériel des enseignants. La Ville mène également un projet de gestion de parc informatique, avec un inventaire du matériel livré.</p>
+        <ul class="facts">
+          <li><b>Mon pôle</b><span>Support utilisateurs</span></li>
+          <li><b>Mes missions</b><span>Assistance, tickets, préparation et renouvellement des postes, Active Directory, enrôlement Intune</span></li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
