@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>William Kayembe – Portfolio BTS SIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* VOICE: ambiance cyber demandée : terminal, centre de supervision, nuit.
+   IDEA: la page se lit comme la console d'un SOC : invite de commande, grille, voyants.
+   PICTURE: la scène SVG du service informatique, redessinée en néon sur fond noir.
+   COLOUR and TYPE: noir #05090b, vert néon #00ff9c, cyan #22d3ee ; JetBrains Mono pour les titres, Inter pour le texte.
+   LAYOUT: un seul thème sombre, quel que soit le réglage du lecteur. */
+:root,:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark;
+  --bg:#05090b;--ink:#d8f7e6;--muted:#86a395;--red:#00ff9c;--slate:#22d3ee;--panel:#0a1316;
+  --line:#173033;--card:#071012;--dev:#1d3a3c;--on:#00170d}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:clip;
+  background-image:linear-gradient(rgba(0,255,156,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,156,.035) 1px,transparent 1px);background-size:32px 32px}
+h1,h2,h3{font-family:"JetBrains Mono",ui-monospace,monospace;line-height:1.12;text-wrap:balance;margin:0}
+h1{text-shadow:0 0 24px rgba(0,255,156,.35)}
+.prompt{font-family:"JetBrains Mono",monospace;color:var(--slate);font-size:15px;margin-bottom:10px}
+.prompt b{color:var(--red);font-weight:600}
+.cur{display:inline-block;width:.6em;height:1.05em;background:var(--red);vertical-align:-3px;margin-left:4px}
+.btn.p{box-shadow:0 0 18px rgba(0,255,156,.35)}
+.panel,.act{border:1px solid var(--line)}
+.act:hover{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
+p{margin:0;max-width:68ch}
+a{color:var(--slate);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:max(5vw,16px)}
+.band{padding-block:clamp(40px,6vw,80px)}
+
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px}
+.brand{font-weight:600;white-space:nowrap;color:var(--ink);text-decoration:none;padding:16px 0;display:flex;align-items:center;gap:10px}
+.brand i{width:12px;height:12px;background:var(--red);display:inline-block}
+nav ul{display:flex;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+nav li a{display:block;padding:16px 12px;color:var(--muted);text-decoration:none;white-space:nowrap;font-size:15px}
+nav li a:hover{color:var(--ink)}
+
+.hero{padding-block:clamp(36px,5vw,64px) 0}
+.hero .role{color:var(--red);font-weight:600;margin-bottom:14px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);letter-spacing:-.015em}
+.hero .lead{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:60ch}
+.hero .lead b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:600;border-radius:2px}
+.btn.p{background:var(--red);border-color:var(--red);color:var(--on)}
+.scene{margin-top:clamp(28px,4vw,48px);background:var(--panel);border-block:1px solid var(--line)}
+.scene svg{display:block;width:100%;height:auto;max-height:420px}
+.scene .t{font:600 15px Inter,sans-serif;fill:var(--ink)}
+.scene .s{font:400 13px Inter,sans-serif;fill:var(--muted)}
+
+.head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:3px solid var(--ink);padding-top:16px;margin-bottom:32px}
+.head h2{font-size:clamp(2rem,4vw,2.8rem)}
+.head p{color:var(--muted);margin-left:auto;font-size:15px}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(20px,3vw,40px)}
+.panel{background:var(--panel);padding:24px;border-radius:2px}
+.panel h3{font-size:1.4rem;margin-bottom:10px}
+.panel p+p{margin-top:12px}
+.facts{list-style:none;padding:0;margin:16px 0 0;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:8.5em 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts li b{font-weight:600;color:var(--muted)}
+.figs{display:flex;gap:32px;flex-wrap:wrap;margin-top:18px}
+.figs div{font-size:14px;color:var(--muted)}
+.figs strong{display:block;font-family:"JetBrains Mono",monospace;font-size:2.2rem;color:var(--ink);line-height:1.1;white-space:nowrap}
+
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px;margin-top:28px}
+.act{border:1px solid var(--line);background:var(--card);padding:22px;display:flex;flex-direction:column;gap:10px;border-radius:2px}
+.act svg{width:40px;height:40px;color:var(--slate)}
+.act h3{font-size:1.25rem}
+.act p{color:var(--muted);font-size:15px}
+.act a{margin-top:auto;font-weight:600;font-size:15px}
+
+.real{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:clamp(20px,3vw,40px);padding-block:32px;border-bottom:1px solid var(--line)}
+.real:first-of-type{padding-top:0}
+.real .num{font-family:"JetBrains Mono",monospace;font-size:1rem;color:var(--red);font-weight:700}
+.real h3{font-size:1.6rem;margin-top:6px}
+.real .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font-size:13px;padding:3px 10px;background:var(--panel);border-radius:2px;white-space:nowrap}
+.steps{display:grid;gap:14px}
+.steps h4{margin:0 0 4px;font-size:15px;font-weight:600}
+.steps p{color:var(--muted);font-size:15px}
+
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:2px;background:var(--card)}
+table{width:100%;border-collapse:collapse;min-width:820px;font-size:14px}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+th{background:var(--panel);font-weight:600;font-size:13px;line-height:1.35}
+td:first-child,th:first-child{text-align:left;width:26%}
+td:first-child small{display:block;color:var(--muted);font-size:13px}
+tr:last-child td{border-bottom:0}
+.ok{display:inline-block;width:14px;height:14px;background:var(--red);border-radius:50%}
+.legend{margin-top:14px;font-size:14px;color:var(--muted)}
+.ok{box-shadow:0 0 10px var(--red)}
+.meta{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:15px}
+.meta b{display:block;font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:400;color:var(--muted)}
+table.e5{min-width:1000px}
+table.e5 th:first-child,table.e5 td:first-child{width:38%}
+table.e5 td.per{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--slate);white-space:nowrap}
+table.e5 tr.grp td{background:#0d1d20;color:var(--red);font-family:"JetBrains Mono",monospace;font-weight:600;font-size:13px;text-align:left;border-top:1px solid var(--red)}
+table.e5 td:first-child{font-size:14px;line-height:1.45}
+.comp{margin-top:24px;border:1px solid var(--line);background:var(--card);border-radius:2px}
+.comp summary{cursor:pointer;padding:14px 18px;min-height:44px;font-weight:600;color:var(--red)}
+.comp summary:focus-visible{outline:2px solid var(--red)}
+.compgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;padding:0 18px 18px}
+.compgrid h4{margin:0 0 6px;font-size:15px;color:var(--slate)}
+.compgrid ul{margin:0;padding-left:1.1em;font-size:14px;color:var(--muted)}
+
+.veille h3{font-size:1.5rem;margin-bottom:12px}
+.list{margin:14px 0 0;padding-left:1.2em}
+.list li{margin-bottom:6px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin-top:28px}
+.tool{border-left:3px solid var(--slate);padding:4px 0 4px 14px}
+.tool b{display:block}
+.tool span{font-size:14px;color:var(--muted)}
+.src{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.src a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:2px;text-decoration:none;font-weight:500}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:700px){.real{grid-template-columns:minmax(0,1fr)}.brand span{display:none}.facts li{grid-template-columns:1fr;gap:2px}}
+@media(prefers-reduced-motion:no-preference){.pulse,.cur{animation:p 2.4s ease-in-out infinite}.cur{animation-duration:1.1s}@keyframes p{50%{opacity:.25}}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="brand" href="#presentation"><i></i><span>William Kayembe</span></a>
+    <ul>
+      <li><a href="#presentation">Présentation</a></li>
+      <li><a href="#activites">Mes activités</a></li>
+      <li><a href="#realisations">Réalisations pro</a></li>
+      <li><a href="#e5">E5</a></li>
+      <li><a href="#veille">Veille</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="presentation">
+  <div class="wrap">
+    <p class="role">BTS SIO, option SISR · en alternance</p>
+    <h1>William Kayembe</h1>
+    <p class="lead">Étudiant à <b>Schola Nova</b> et technicien support en alternance au <b>service informatique de la mairie de Gennevilliers</b>, où j'accompagne au quotidien les agents de la ville.</p>
+    <div class="cta">
+      <a class="btn p" href="#realisations">Voir mes réalisations</a>
+      <a class="btn" href="#e5">Tableau E5</a>
+    </div>
+  </div>
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--card)"/><stop offset="1" stop-color="var(--panel)"/></linearGradient>
+      </defs>
+      <!-- liaisons -->
+      <g fill="none" stroke="var(--slate)" stroke-width="2" stroke-dasharray="6 6">
+        <path d="M250 230 H470"/><path d="M640 230 H760"/><path d="M930 230 H1000"/>
+        <path d="M555 150 V95 H845 V150"/>
+      </g>
+      <!-- poste agent -->
+      <g transform="translate(90 140)">
+        <ellipse cx="80" cy="168" rx="92" ry="10" fill="var(--line)"/>
+        <rect x="0" y="0" width="160" height="110" rx="6" fill="var(--dev)"/>
+        <rect x="8" y="8" width="144" height="94" rx="3" fill="url(#g)"/>
+        <rect x="20" y="22" width="80" height="8" fill="var(--slate)"/><rect x="20" y="40" width="118" height="6" fill="var(--line)"/><rect x="20" y="54" width="100" height="6" fill="var(--line)"/>
+        <rect x="70" y="110" width="20" height="30" fill="var(--dev)"/><rect x="40" y="140" width="80" height="8" rx="2" fill="var(--dev)"/>
+        <text class="t" x="80" y="196" text-anchor="middle">Poste agent</text>
+        <text class="s" x="80" y="215" text-anchor="middle">préparation, dépannage</text>
+      </g>
+      <!-- support / tickets -->
+      <g transform="translate(470 150)">
+        <ellipse cx="85" cy="158" rx="95" ry="10" fill="var(--line)"/>
+        <rect x="0" y="0" width="170" height="150" rx="4" fill="var(--card)" stroke="var(--red)" stroke-width="2"/>
+        <rect x="0" y="0" width="170" height="30" rx="4" fill="var(--red)"/>
+        <text x="14" y="20" fill="var(--on)" style="font:600 13px Inter,sans-serif">Tickets</text>
+        <g><circle cx="20" cy="52" r="6" fill="var(--red)" class="pulse"/><rect x="34" y="48" width="110" height="8" fill="var(--line)"/></g>
+        <g><circle cx="20" cy="80" r="6" fill="var(--slate)"/><rect x="34" y="76" width="90" height="8" fill="var(--line)"/></g>
+        <g><circle cx="20" cy="108" r="6" fill="var(--slate)"/><rect x="34" y="104" width="120" height="8" fill="var(--line)"/></g>
+        <text class="t" x="85" y="186" text-anchor="middle">Support utilisateurs</text>
+        <text class="s" x="85" y="205" text-anchor="middle">appels et incidents</text>
+      </g>
+      <!-- annuaire AD -->
+      <g transform="translate(760 150)">
+        <ellipse cx="85" cy="158" rx="90" ry="10" fill="var(--line)"/>
+        <rect x="20" y="0" width="130" height="150" rx="4" fill="var(--dev)"/>
+        <g fill="var(--panel)"><rect x="34" y="16" width="102" height="26" rx="2"/><rect x="34" y="52" width="102" height="26" rx="2"/><rect x="34" y="88" width="102" height="26" rx="2"/></g>
+        <g fill="var(--slate)"><circle cx="48" cy="29" r="4"/><circle cx="48" cy="65" r="4"/><circle cx="48" cy="101" r="4"/></g>
+        <text class="t" x="85" y="186" text-anchor="middle">Active Directory</text>
+        <text class="s" x="85" y="205" text-anchor="middle">comptes et droits</text>
+      </g>
+      <!-- mairie -->
+      <g transform="translate(1000 110)">
+        <ellipse cx="80" cy="198" rx="96" ry="10" fill="var(--line)"/>
+        <path d="M0 70 L80 20 L160 70 Z" fill="var(--slate)"/>
+        <rect x="10" y="70" width="140" height="120" fill="var(--card)" stroke="var(--red)" stroke-width="2"/>
+        <rect x="68" y="0" width="24" height="26" fill="var(--dev)"/><path d="M80 0 V-18 L100 -12 L80 -6" fill="var(--red)"/>
+        <g fill="var(--slate)"><rect x="26" y="88" width="20" height="28"/><rect x="70" y="88" width="20" height="28"/><rect x="114" y="88" width="20" height="28"/></g>
+        <rect x="64" y="140" width="32" height="50" fill="var(--dev)"/>
+        <text class="t" x="80" y="226" text-anchor="middle">Mairie de Gennevilliers</text>
+        <text class="s" x="80" y="245" text-anchor="middle">≈ 2 000 agents</text>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<main>
+<section class="band">
+  <div class="wrap">
+    <div class="head"><h2>Présentation</h2><p>Mon parcours, mon école, mon entreprise</p></div>
+    <div class="cols">
+      <div class="panel">
+        <h3>Qui je suis</h3>
+        <p>Je prépare le BTS Services Informatiques aux Organisations, option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), en alternance.</p>
+        <p>Au sein du pôle support utilisateurs, j'assure l'assistance technique des agents, je prépare les postes de travail et je gère les comptes dans l'Active Directory. J'interviens aussi ponctuellement sur l'infrastructure et l'audiovisuel.</p>
+      </div>
+      <div class="panel">
+        <h3>Schola Nova</h3>
+        <p>École située dans le 19<sup>e</sup> arrondissement de Paris, qui accueille des étudiants après le bac. Elle propose des formations en commerce, gestion et informatique, prépare aux BTS et bachelors, et accompagne ses étudiants dans la recherche d'une entreprise d'alternance.</p>
+        <ul class="facts">
+          <li><b>Bloc 1</b><span>Support et mise à disposition de services informatiques</span></li>
+          <li><b>Bloc 2</b><span>Administration des systèmes et des réseaux</span></li>
+          <li><b>Bloc 3</b><span>Cybersécurité des services informatiques</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Mairie de Gennevilliers</h3>
+        <p>Commune des Hauts-de-Seine, la mairie assure les démarches administratives et les services municipaux pour ses habitants. Son service informatique équipe et accompagne l'ensemble des agents de la ville.</p>
+        <div class="figs">
+          <div><strong>≈ 51 000</strong>habitants</div>
+          <div><strong>≈ 2 000</strong>agents</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="activites" style="background:var(--panel)">
+  <div class="wrap">
+    <div class="head"><h2>Mes activités</h2><p>Technicien support en alternance</p></div>
+    <p>Mes missions s'organisent autour de deux axes : <strong>le support aux utilisateurs</strong> et <strong>la gestion du parc informatique</strong>, avec des missions ponctuelles sur l'infrastructure et l'audiovisuel.</p>
+    <div class="acts">
+      <article class="act">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M10 8h6l3 8-4 2a18 18 0 0 0 7 7l2-4 8 3v6a3 3 0 0 1-3 3A25 25 0 0 1 7 11a3 3 0 0 1 3-3z"/></svg>
+        <h3>Ticketing et prise d'appel</h3>
+        <p>Réception des demandes des agents, qualification, création et suivi des tickets jusqu'à leur résolution.</p>
+        <a href="#r1">Voir la réalisation</a>
+      </article>
+      <article class="act">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="20" cy="13" r="6"/><path d="M8 34c1-7 6-10 12-10s11 3 12 10"/></svg>
+        <h3>Active Directory</h3>
+        <p>Création, modification et désactivation des comptes, gestion des groupes et réinitialisation des mots de passe.</p>
+        <a href="#r2">Voir la réalisation</a>
+      </article>
+      <article class="act">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="7" width="30" height="20" rx="2"/><path d="M14 33h12M20 27v6"/><path d="M15 17l4 4 7-7"/></svg>
+        <h3>Renouvellement de postes</h3>
+        <p>Préparation, installation et remise des nouveaux postes de travail aux agents, et mise à jour de l'inventaire.</p>
+        <a href="#r3">Voir la réalisation</a>
+      </article>
+      <article class="act">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M25 6a8 8 0 0 0-8 10L6 27l7 7 11-11A8 8 0 0 0 34 15l-5 3-4-1-1-4 3-5z"/></svg>
+        <h3>Dépannage utilisateurs</h3>
+        <p>Diagnostic et résolution des incidents matériels et logiciels, à distance ou directement au poste de l'agent.</p>
+        <a href="#r4">Voir la réalisation</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="realisations">
+  <div class="wrap">
+    <div class="head"><h2>Réalisations professionnelles</h2><p>Situations vécues à la mairie</p></div>
+
+    <article class="real" id="r1">
+      <div><span class="num">Réalisation 1</span><h3>Traiter une demande d'assistance</h3>
+        <div class="tags"><span class="tag">Ticketing</span><span class="tag">Prise d'appel</span><span class="tag">Bloc 1</span></div></div>
+      <div class="steps">
+        <div><h4>Contexte</h4><p>Le pôle support reçoit chaque jour les appels et demandes des agents des différents services de la ville.</p></div>
+        <div><h4>Ce que je fais</h4><p>Je prends l'appel, j'identifie l'agent et son poste, je qualifie la demande (incident ou demande de service) et j'en évalue la priorité. Je crée le ticket, je le traite ou je l'escalade vers le bon interlocuteur, puis je le clôture une fois la solution validée avec l'agent.</p></div>
+        <div><h4>Ce que j'en retiens</h4><p>Une demande bien qualifiée dès l'appel fait gagner du temps à toute l'équipe, et l'historique des tickets sert de base de connaissances.</p></div>
+      </div>
+    </article>
+
+    <article class="real" id="r2">
+      <div><span class="num">Réalisation 2</span><h3>Gérer les comptes utilisateurs</h3>
+        <div class="tags"><span class="tag">Active Directory</span><span class="tag">Groupes</span><span class="tag">Bloc 1</span></div></div>
+      <div class="steps">
+        <div><h4>Contexte</h4><p>Avec environ 2 000 agents, les arrivées, départs et mobilités internes sont fréquents et demandent une gestion rigoureuse des accès.</p></div>
+        <div><h4>Ce que je fais</h4><p>Je crée les comptes des nouveaux arrivants dans la bonne unité d'organisation, je les ajoute aux groupes qui donnent accès aux ressources de leur service, je réinitialise les mots de passe et je désactive les comptes des agents qui quittent la collectivité.</p></div>
+        <div><h4>Ce que j'en retiens</h4><p>Un compte bien rangé et des droits limités au besoin réel, c'est la base de la sécurité du système d'information.</p></div>
+      </div>
+    </article>
+
+    <article class="real" id="r3">
+      <div><span class="num">Réalisation 3</span><h3>Renouveler le parc de postes</h3>
+        <div class="tags"><span class="tag">Gestion de parc</span><span class="tag">Déploiement</span><span class="tag">Bloc 1</span></div></div>
+      <div class="steps">
+        <div><h4>Contexte</h4><p>Les postes de travail arrivés en fin de vie sont remplacés pour garantir aux agents un matériel fiable et à jour.</p></div>
+        <div><h4>Ce que je fais</h4><p>Je prépare les nouveaux postes (système, logiciels métiers, intégration au domaine), je planifie le remplacement avec l'agent, j'installe le poste, je vérifie que tout fonctionne et je mets à jour l'inventaire du parc.</p></div>
+        <div><h4>Ce que j'en retiens</h4><p>Un renouvellement réussi se prépare en amont : l'agent doit retrouver son environnement de travail sans perte de temps.</p></div>
+      </div>
+    </article>
+
+    <article class="real" id="r4">
+      <div><span class="num">Réalisation 4</span><h3>Dépanner un utilisateur</h3>
+        <div class="tags"><span class="tag">Diagnostic</span><span class="tag">Support N1</span><span class="tag">Bloc 1</span></div></div>
+      <div class="steps">
+        <div><h4>Contexte</h4><p>Un agent signale un problème qui l'empêche de travailler : poste lent, imprimante, accès réseau ou logiciel en erreur.</p></div>
+        <div><h4>Ce que je fais</h4><p>J'interroge l'agent pour reproduire le problème, je teste les hypothèses une par une (matériel, réseau, compte, logiciel), j'interviens à distance ou sur place, puis je documente la solution dans le ticket.</p></div>
+        <div><h4>Ce que j'en retiens</h4><p>Une démarche méthodique et une bonne communication avec l'agent comptent autant que la solution technique.</p></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="e5" style="background:var(--panel)">
+  <div class="wrap">
+    <div class="head"><h2>E5 · Tableau de synthèse</h2><p>Réalisations professionnelles · Session 2027</p></div>
+    <ul class="meta">
+      <li><b>Candidat</b><span>KAYEMBE KONGOLO William</span></li>
+      <li><b>Centre de formation</b><span>Schola Nova</span></li>
+      <li><b>Option</b><span>SISR</span></li>
+      <li><b>Session</b><span>2027</span></li>
+    </ul>
+    <div class="scroll" role="region" aria-label="Tableau de synthèse E5" tabindex="0">
+      <table class="e5">
+        <thead><tr id="th"></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+    <p class="legend"><span class="ok" style="vertical-align:-2px"></span> compétence mise en œuvre dans la réalisation</p>
+    <details class="comp">
+      <summary>Détail des compétences du bloc 1</summary>
+      <div class="compgrid" id="cg"></div>
+    </details>
+  </div>
+</section>
+
+<section class="band veille" id="veille">
+  <div class="wrap">
+    <div class="head"><h2>Veille technologique</h2><p>Une obligation du BTS SIO, et une habitude de métier</p></div>
+    <div class="cols">
+      <div>
+        <h3>Pourquoi une veille ?</h3>
+        <p>La veille technologique consiste à suivre en continu l'actualité d'un secteur, les nouvelles technologies et les projets des acteurs du marché. En informatique, où tout évolue très vite, elle permet de suivre les évolutions techniques, d'anticiper les changements et de développer ses compétences. Pour être efficace, elle doit être organisée.</p>
+        <div class="tools">
+          <div class="tool"><b>Flux RSS</b><span>Feedly</span></div>
+          <div class="tool"><b>Réseaux sociaux</b><span>X, Facebook</span></div>
+          <div class="tool"><b>IA</b><span>collecte et résumé</span></div>
+          <div class="tool"><b>Sites spécialisés</b><span>01net, Developpez.com, JDN</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Microsoft Entra ID</h3>
+        <p>Anciennement Azure Active Directory, Entra ID est le service d'identité cloud de Microsoft. Il gère les comptes et les droits d'accès d'une organisation et permet de se connecter à Microsoft 365.</p>
+        <ul class="list">
+          <li>Gestion des comptes utilisateurs</li>
+          <li>Réinitialisation des mots de passe en libre-service</li>
+          <li>Authentification multifacteur (MFA)</li>
+          <li>Accès basé sur les rôles</li>
+          <li>Gestion des appareils</li>
+          <li>Authentification unique (SSO)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cols" style="margin-top:40px">
+      <div class="panel">
+        <h3>L'IA au service de la cybersécurité</h3>
+        <p>L'intelligence artificielle détecte automatiquement les menaces et les comportements anormaux sur un réseau. Des solutions comme Darktrace, Vectra AI ou Microsoft Defender s'appuient sur des algorithmes de machine learning pour repérer une attaque plus tôt qu'une analyse manuelle.</p>
+      </div>
+      <div class="panel">
+        <h3>…et entre de mauvaises mains</h3>
+        <p>Les attaquants utilisent aussi l'IA : e-mails d'hameçonnage rédigés avec ChatGPT, deepfakes produits avec des outils comme DeepFaceLab. L'IA renforce la cybersécurité, mais demande une gestion des risques rigoureuse et une supervision humaine.</p>
+      </div>
+    </div>
+    <div class="src">
+      <a href="https://www.01net.com">01net</a>
+      <a href="https://www.developpez.com">Developpez.com</a>
+      <a href="https://www.journaldunet.com">Journal du Net</a>
+      <a href="https://learn.microsoft.com/fr-fr/entra/fundamentals/whatis">Documentation Entra ID</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>William Kayembe · BTS SIO option SISR</span><span>Schola Nova · Mairie de Gennevilliers</span></div></footer>
+
+<script>
+{
+  const comps=[
+    ["Gérer le patrimoine informatique",["Recenser et identifier les ressources numériques","Exploiter des référentiels, normes et standards adoptés par le prestataire informatique","Mettre en place et vérifier les niveaux d'habilitation associés à un service","Vérifier les conditions de la continuité d'un service informatique","Gérer des sauvegardes","Vérifier le respect des règles d'utilisation des ressources numériques"]],
+    ["Répondre aux incidents et aux demandes d'assistance et d'évolution",["Collecter, suivre et orienter des demandes","Traiter des demandes concernant les services réseau et système, applicatifs","Traiter des demandes concernant les applications"]],
+    ["Développer la présence en ligne de l'organisation",["Participer à la valorisation de l'image de l'organisation sur les médias numériques en tenant compte du cadre juridique et des enjeux économiques","Référencer les services en ligne de l'organisation et mesurer leur visibilité","Participer à l'évolution d'un site Web exploitant les données de l'organisation"]],
+    ["Travailler en mode projet",["Analyser les objectifs et les modalités d'organisation d'un projet","Planifier les activités","Évaluer les indicateurs de suivi d'un projet et analyser les écarts"]],
+    ["Mettre à disposition des utilisateurs un service informatique",["Réaliser les tests d'intégration et d'acceptation d'un service","Déployer un service","Accompagner les utilisateurs dans la mise en place d'un service"]],
+    ["Organiser son développement professionnel",["Mettre en place son environnement d'apprentissage personnel","Mettre en œuvre des outils et stratégies de veille informationnelle","Gérer son identité professionnelle","Développer son projet professionnel"]]
+  ];
+  const groups=[
+    ["Réalisations en cours de formation",[
+      ["Création de mon portfolio en ligne : présentation de mon parcours, de mes réalisations, de ma veille technologique.","09/25 au 03/27",[0,0,1,0,0,1]],
+      ["Étude des protocoles de communication TCP/IP (modèles OSI et TCP/IP, adressage, ports, DNS, DHCP).","09/25 au 06/27",[1,0,0,0,0,1]],
+      ["Travaux Cisco Packet Tracer : conception, configuration (switchs, routeurs) et test d'une infrastructure système et réseau.","09/25 au 06/27",[1,0,0,0,1,0]],
+      ["Mise en place d'environnements virtuels Windows et Linux (machines virtuelles, configuration réseau, installation de services).","09/25 au 06/27",[1,0,0,0,1,0]],
+      ["Déploiement d'un hyperviseur Proxmox : création et gestion de machines virtuelles, de sauvegardes et du réseau virtuel.","09/25 au 06/27",[1,0,0,0,1,0]],
+      ["Installation de Windows Server 2022 et mise en service des services DHCP, DNS et Active Directory, avec gestion des utilisateurs, des groupes et des droits d'accès.","09/25 au 06/27",[1,0,0,0,1,0]],
+      ["Adressage IP d'une infrastructure système et réseau et création de VLAN (segmentation, routage inter-VLAN).","09/25 au 05/27",[1,0,0,0,1,0]]
+    ]],
+    ["Réalisations en milieu professionnel · 1re année (DSI de la mairie de Gennevilliers)",[
+      ["Enrôlement de postes enseignants via Microsoft Intune (inscription des appareils, application des stratégies de configuration et de conformité).","09/25 au 06/26",[1,0,0,0,1,0]],
+      ["Déploiement des postes dans les écoles : déplacement sur site, remise du matériel aux enseignants, vérification du bon fonctionnement et accompagnement à la prise en main.","09/25 au 06/26",[0,0,0,1,1,0]],
+      ["Participation aux interventions de mes collègues sur le réseau et la téléphonie (diagnostic, brassage, installation et dépannage de téléphones et d'équipements réseau).","11/25 au 04/26",[0,1,0,0,1,0]],
+      ["Installation et préparation de postes informatiques (installation du système et des logiciels, intégration au réseau, création des comptes utilisateurs).","06/26 au 07/27",[1,0,0,0,1,0]]
+    ]],
+    ["Réalisations en milieu professionnel · 2e année (DSI de la mairie de Gennevilliers)",[
+      ["Traitement des tickets d'incidents via l'outil de gestion de tickets de la DSI : prise en charge, diagnostic, résolution, suivi et clôture.","07/26 au 07/27",[0,1,0,0,1,0]],
+      ["Remplacement de postes informatiques (renouvellement du parc) : installation du nouveau poste, transfert des données et des paramètres utilisateur, retrait de l'ancien matériel.","06/26 au 07/27",[1,0,0,1,1,0]],
+      ["Remplacement d'écrans et de matériel défectueux chez les utilisateurs, avec vérification du bon fonctionnement après intervention.","09/26 au 07/27",[1,1,0,0,0,0]]
+    ]]
+  ];
+  document.getElementById('th').innerHTML='<th>Réalisation professionnelle</th><th>Période</th>'+comps.map(c=>'<th>'+c[0]+'</th>').join('');
+  document.getElementById('tb').innerHTML=groups.map(([g,rows])=>
+    '<tr class="grp"><td colspan="8">'+g+'</td></tr>'+rows.map(([t,p,c])=>
+      '<tr><td>'+t+'</td><td class="per">'+p+'</td>'+c.map(v=>'<td>'+(v?'<span class="ok" role="img" aria-label="oui"></span>':'')+'</td>').join('')+'</tr>'
+    ).join('')
+  ).join('');
+  document.getElementById('cg').innerHTML=comps.map(([n,l])=>'<div><h4>'+n+'</h4><ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('');
+}
+</script>
+</body>
+</html>
