@@ -154,6 +154,19 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 .me-photo{margin:0;justify-self:end;width:100%;max-width:300px;border:1px solid var(--red);border-radius:18px;overflow:hidden;box-shadow:0 0 0 6px rgba(76,201,255,.08),0 0 36px rgba(76,201,255,.3)}
 .me-photo img{display:block;width:100%;height:auto}
 @media(max-width:760px){.hgrid{grid-template-columns:minmax(0,1fr)}.me-photo{justify-self:start;max-width:220px;order:-1}}
+.pfilters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.pf{min-height:40px;padding:0 16px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:500 14px Inter,sans-serif;border-radius:999px;cursor:pointer}
+.pf:hover{color:var(--ink);border-color:var(--slate)}.pf.on{background:var(--red);border-color:var(--red);color:var(--on)}
+.pf:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,box-shadow .2s}
+.proj:hover{border-color:var(--red);box-shadow:0 0 18px rgba(76,201,255,.15)}
+.proj[hidden]{display:none}
+.ptop{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.pcat{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--red)}
+.pdate{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);white-space:nowrap}
+.proj h3{font-size:1.2rem}.proj p{color:var(--muted);font-size:15px}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -170,6 +183,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <li><a href="#presentation">Présentation</a></li>
       <li><a href="#activites">Mes activités</a></li>
       <li><a href="#realisations">Réalisations pro</a></li>
+      <li><a href="#projets">Projets</a></li>
       <li><a href="#e5">E5</a></li>
       <li><a href="#veille">Veille</a></li>
     </ul>
@@ -377,6 +391,59 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
+<section class="band" id="projets">
+  <div class="wrap">
+    <div class="head"><h2>Projets</h2><p>Projets techniques réalisés en formation à Schola Nova</p></div>
+    <div class="pfilters" role="group" aria-label="Filtrer les projets">
+      <button class="pf on" data-f="all">Tous</button><button class="pf" data-f="Réseau">Réseau</button><button class="pf" data-f="Système">Système</button><button class="pf" data-f="Virtualisation">Virtualisation</button><button class="pf" data-f="Web">Web</button>
+    </div>
+    <div class="pgrid">
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Réseau</span><span class="pdate">09/25 – 06/27</span></div>
+        <h3>Travaux Cisco Packet Tracer</h3>
+        <p>Conception, configuration et test d'une infrastructure système et réseau complète : câblage, configuration des switchs et des routeurs, puis vérification de la connectivité.</p>
+        <div class="ptags"><span class="tag">Cisco Packet Tracer</span><span class="tag">Switchs</span><span class="tag">Routeurs</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Réseau</span><span class="pdate">09/25 – 05/27</span></div>
+        <h3>Adressage IP et VLAN</h3>
+        <p>Plan d'adressage IP d'une infrastructure et segmentation du réseau en VLAN, avec mise en place du routage inter-VLAN pour faire communiquer les différents services.</p>
+        <div class="ptags"><span class="tag">Adressage IP</span><span class="tag">VLAN</span><span class="tag">Routage inter-VLAN</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Réseau</span><span class="pdate">09/25 – 06/27</span></div>
+        <h3>Protocoles TCP/IP</h3>
+        <p>Étude des modèles OSI et TCP/IP et des protocoles qui font fonctionner un réseau : adressage, ports, DNS et DHCP.</p>
+        <div class="ptags"><span class="tag">OSI</span><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">DHCP</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Système</span><span class="pdate">09/25 – 06/27</span></div>
+        <h3>Windows Server 2022 et Active Directory</h3>
+        <p>Installation de Windows Server 2022 et mise en service des services DHCP, DNS et Active Directory, avec gestion des utilisateurs, des groupes et des droits d'accès.</p>
+        <div class="ptags"><span class="tag">Windows Server 2022</span><span class="tag">AD DS</span><span class="tag">DHCP</span><span class="tag">DNS</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Virtualisation</span><span class="pdate">09/25 – 06/27</span></div>
+        <h3>Hyperviseur Proxmox</h3>
+        <p>Déploiement d'un hyperviseur Proxmox : création et gestion de machines virtuelles, sauvegardes et configuration du réseau virtuel.</p>
+        <div class="ptags"><span class="tag">Proxmox</span><span class="tag">Machines virtuelles</span><span class="tag">Sauvegardes</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Virtualisation</span><span class="pdate">09/25 – 06/27</span></div>
+        <h3>Environnements Windows et Linux</h3>
+        <p>Mise en place de machines virtuelles Windows et Linux : configuration réseau et installation de services.</p>
+        <div class="ptags"><span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">Virtualisation</span></div>
+      </article>
+      <article class="proj">
+        <div class="ptop"><span class="pcat">Web</span><span class="pdate">09/25 – 03/27</span></div>
+        <h3>Portfolio en ligne</h3>
+        <p>Conception de ce portfolio en HTML et CSS, puis publication sur GitHub Pages : présentation de mon parcours, de mes réalisations et de ma veille technologique.</p>
+        <div class="ptags"><span class="tag">HTML / CSS</span><span class="tag">GitHub Pages</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="e5" style="background:var(--panel)">
   <div class="wrap">
     <div class="head"><h2>E5 · Tableau de synthèse</h2><p>Réalisations professionnelles · Session 2027</p></div>
@@ -519,6 +586,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     ).join('')
   ).join('');
   if(document.getElementById('cg'))document.getElementById('cg').innerHTML=comps.map(([n,l])=>'<div><h4>'+n+'</h4><ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('');
+
+  const pfs=document.querySelectorAll('.pf'),projs=document.querySelectorAll('.proj');
+  pfs.forEach(b=>b.addEventListener('click',()=>{pfs.forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;projs.forEach(p=>{p.hidden=!(f==='all'||p.querySelector('.pcat').textContent===f)})}));
 }
 </script>
 </body>
