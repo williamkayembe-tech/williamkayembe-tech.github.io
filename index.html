@@ -148,6 +148,8 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 .org .figs{margin:4px 0 16px}
 .banner{display:block;width:calc(100% + 48px);margin:-24px -24px 20px;height:200px;object-fit:cover;border-bottom:1px solid var(--line)}
 .me{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.sheet{display:block;max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:2px;box-shadow:0 0 24px rgba(76,201,255,.15)}
+.sheet img{display:block;width:100%;height:auto}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -371,23 +373,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section class="band" id="e5" style="background:var(--panel)">
   <div class="wrap">
     <div class="head"><h2>E5 · Tableau de synthèse</h2><p>Réalisations professionnelles · Session 2027</p></div>
-    <ul class="meta">
-      <li><b>Candidat</b><span>KAYEMBE KONGOLO William</span></li>
-      <li><b>Centre de formation</b><span>Schola Nova</span></li>
-      <li><b>Option</b><span>SISR</span></li>
-      <li><b>Session</b><span>2027</span></li>
-    </ul>
-    <div class="scroll" role="region" aria-label="Tableau de synthèse E5" tabindex="0">
-      <table class="e5">
-        <thead><tr id="th"></tr></thead>
-        <tbody id="tb"></tbody>
-      </table>
+    <div class="me" style="margin:0 0 20px">
+      <a class="btn p" href="Tableau_synthese_E5_William_Kayembe.pdf" target="_blank" rel="noopener">Ouvrir en PDF</a>
+      <a class="btn" href="Tableau_synthese_E5_William_Kayembe.xlsx">Télécharger le fichier Excel</a>
     </div>
-    <p class="legend"><span class="ok" style="vertical-align:-2px"></span> compétence mise en œuvre dans la réalisation</p>
-    <details class="comp">
-      <summary>Détail des compétences du bloc 1</summary>
-      <div class="compgrid" id="cg"></div>
-    </details>
+    <a class="sheet" href="Tableau_synthese_E5_William_Kayembe.pdf" target="_blank" rel="noopener">
+      <img src="tableau_e5.png" alt="Tableau de synthèse des réalisations professionnelles de William Kayembe Kongolo, BTS SIO option SISR, session 2027" loading="lazy">
+    </a>
+    <p class="legend">Cliquez sur le tableau pour l'ouvrir en grand. Les cases vertes indiquent les compétences mises en œuvre dans chaque réalisation.</p>
   </div>
 </section>
 
@@ -512,13 +505,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       ["Remplacement d'écrans et de matériel défectueux chez les utilisateurs, avec vérification du bon fonctionnement après intervention.","09/26 au 07/27",[1,1,0,0,0,0]]
     ]]
   ];
-  document.getElementById('th').innerHTML='<th>Réalisation professionnelle</th><th>Période</th>'+comps.map(c=>'<th>'+c[0]+'</th>').join('');
-  document.getElementById('tb').innerHTML=groups.map(([g,rows])=>
+  if(document.getElementById('th'))document.getElementById('th').innerHTML='<th>Réalisation professionnelle</th><th>Période</th>'+comps.map(c=>'<th>'+c[0]+'</th>').join('');
+  if(document.getElementById('tb'))document.getElementById('tb').innerHTML=groups.map(([g,rows])=>
     '<tr class="grp"><td colspan="8">'+g+'</td></tr>'+rows.map(([t,p,c])=>
       '<tr><td>'+t+'</td><td class="per">'+p+'</td>'+c.map(v=>'<td>'+(v?'<span class="ok" role="img" aria-label="oui"></span>':'')+'</td>').join('')+'</tr>'
     ).join('')
   ).join('');
-  document.getElementById('cg').innerHTML=comps.map(([n,l])=>'<div><h4>'+n+'</h4><ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('');
+  if(document.getElementById('cg'))document.getElementById('cg').innerHTML=comps.map(([n,l])=>'<div><h4>'+n+'</h4><ul>'+l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('');
 }
 </script>
 </body>
