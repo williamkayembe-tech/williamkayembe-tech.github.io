@@ -121,6 +121,25 @@ table.e5 td:first-child{font-size:14px;line-height:1.45}
 .src{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .src a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:2px;text-decoration:none;font-weight:500}
 
+.vhero{display:grid;grid-template-columns:140px minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-bottom:40px}
+.vhero p+p{margin-top:12px}.vhero h3{font-size:1.8rem;margin-bottom:12px}
+.idlogo{width:140px;height:140px;filter:drop-shadow(0 0 14px rgba(76,201,255,.35))}
+.sub{font-size:1.35rem;margin:44px 0 18px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.f{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:2px}
+.f b{display:block;color:var(--red);font-family:"JetBrains Mono",monospace;font-size:15px;margin-bottom:4px}
+.f span{font-size:14px;color:var(--muted)}
+table.cmp{min-width:620px}table.cmp td,table.cmp th{text-align:left}
+table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace;font-size:13px;width:20%}
+.note2{margin-top:14px;font-size:15px;color:var(--muted)}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+.tl li{position:relative;display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:16px;padding:0 0 22px 24px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--slate)}
+.tl li.now::before{background:var(--red);border-color:var(--red);box-shadow:0 0 10px var(--red)}
+.tl li.next::before{border-style:dashed;border-color:var(--muted)}
+.tl time{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--slate);padding-top:2px;white-space:nowrap}
+.tl b{display:block;margin-bottom:2px}.tl p{font-size:15px;color:var(--muted)}
+@media(max-width:600px){.vhero{grid-template-columns:minmax(0,1fr)}.idlogo{width:96px;height:96px}.tl li{grid-template-columns:minmax(0,1fr);gap:2px}}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -344,46 +363,81 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section class="band veille" id="veille">
   <div class="wrap">
-    <div class="head"><h2>Veille technologique</h2><p>Une obligation du BTS SIO, et une habitude de métier</p></div>
-    <div class="cols">
+    <div class="head"><h2>Veille technologique</h2><p>Sujet suivi : Microsoft Entra ID</p></div>
+
+    <div class="vhero">
+      <svg class="idlogo" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="kg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--slate)"/><stop offset="1" stop-color="var(--red)"/></linearGradient></defs>
+        <path d="M60 8 L104 26 V58 C104 84 86 104 60 112 C34 104 16 84 16 58 V26 Z" fill="none" stroke="url(#kg)" stroke-width="4"/>
+        <circle cx="60" cy="50" r="13" fill="none" stroke="var(--red)" stroke-width="4"/>
+        <path d="M37 88 C40 74 49 68 60 68 C71 68 80 74 83 88" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round"/>
+      </svg>
       <div>
-        <h3>Pourquoi une veille ?</h3>
-        <p>La veille technologique consiste à suivre en continu l'actualité d'un secteur, les nouvelles technologies et les projets des acteurs du marché. En informatique, où tout évolue très vite, elle permet de suivre les évolutions techniques, d'anticiper les changements et de développer ses compétences. Pour être efficace, elle doit être organisée.</p>
-        <div class="tools">
-          <div class="tool"><b>Flux RSS</b><span>Feedly</span></div>
-          <div class="tool"><b>Réseaux sociaux</b><span>X, Facebook</span></div>
-          <div class="tool"><b>IA</b><span>collecte et résumé</span></div>
-          <div class="tool"><b>Sites spécialisés</b><span>01net, Developpez.com, JDN</span></div>
-        </div>
-      </div>
-      <div class="panel">
         <h3>Microsoft Entra ID</h3>
-        <p>Anciennement Azure Active Directory, Entra ID est le service d'identité cloud de Microsoft. Il gère les comptes et les droits d'accès d'une organisation et permet de se connecter à Microsoft 365.</p>
-        <ul class="list">
-          <li>Gestion des comptes utilisateurs</li>
-          <li>Réinitialisation des mots de passe en libre-service</li>
-          <li>Authentification multifacteur (MFA)</li>
-          <li>Accès basé sur les rôles</li>
-          <li>Gestion des appareils</li>
-          <li>Authentification unique (SSO)</li>
-        </ul>
+        <p>Entra ID, anciennement <strong>Azure Active Directory</strong>, est le service d'identité cloud de Microsoft. Il gère les comptes et les droits d'accès d'une organisation, et c'est lui qui authentifie les utilisateurs lorsqu'ils se connectent à Microsoft 365, à Intune ou à des milliers d'applications en ligne.</p>
+        <p>J'ai choisi ce sujet parce qu'il est au cœur de mon alternance : à la DSI, je gère les comptes dans l'Active Directory et j'enrôle des postes avec Microsoft Intune, qui s'appuie sur Entra ID. Comprendre son évolution, c'est comprendre où va la gestion des identités dans les organisations.</p>
       </div>
     </div>
+
+    <h3 class="sub">Les fonctions clés</h3>
+    <div class="fgrid">
+      <div class="f"><b>Gestion des comptes</b><span>Création, groupes, cycle de vie des utilisateurs</span></div>
+      <div class="f"><b>MFA</b><span>Authentification à plusieurs facteurs</span></div>
+      <div class="f"><b>SSO</b><span>Une seule connexion pour toutes les applications</span></div>
+      <div class="f"><b>Accès conditionnel</b><span>Autoriser ou bloquer selon le lieu, l'appareil, le risque</span></div>
+      <div class="f"><b>Rôles (RBAC)</b><span>Donner à chacun uniquement les droits nécessaires</span></div>
+      <div class="f"><b>Libre-service</b><span>Réinitialisation du mot de passe par l'utilisateur</span></div>
+      <div class="f"><b>Gestion des appareils</b><span>Inscription et conformité des postes, avec Intune</span></div>
+      <div class="f"><b>Synchronisation</b><span>Lien avec l'Active Directory local (identité hybride)</span></div>
+    </div>
+
+    <h3 class="sub">Active Directory ou Entra ID ?</h3>
+    <div class="scroll" role="region" aria-label="Comparaison AD et Entra ID" tabindex="0">
+      <table class="cmp">
+        <thead><tr><th></th><th>Active Directory (AD DS)</th><th>Microsoft Entra ID</th></tr></thead>
+        <tbody>
+          <tr><td>Où ?</td><td>Sur des serveurs de l'organisation (contrôleurs de domaine)</td><td>Dans le cloud Microsoft</td></tr>
+          <tr><td>Pour quoi ?</td><td>Postes et serveurs du réseau local</td><td>Microsoft 365, applications web, appareils mobiles</td></tr>
+          <tr><td>Protocoles</td><td>Kerberos, NTLM, LDAP</td><td>OAuth 2.0, OpenID Connect, SAML</td></tr>
+          <tr><td>Organisation</td><td>Domaines, unités d'organisation (OU)</td><td>Tenant, groupes, unités administratives</td></tr>
+          <tr><td>Configuration des postes</td><td>Stratégies de groupe (GPO)</td><td>Microsoft Intune</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note2">Beaucoup d'organisations, comme les collectivités, fonctionnent en <strong>identité hybride</strong> : les comptes sont créés dans l'AD local puis synchronisés vers Entra ID.</p>
+
+    <h3 class="sub">Actualités suivies</h3>
+    <ol class="tl">
+      <li><time>Octobre 2024</time><div><b>MFA obligatoire pour les administrateurs</b><p>Microsoft impose l'authentification multifacteur pour se connecter au portail Azure, au centre d'administration Entra et au centre d'administration Intune.</p></div></li>
+      <li><time>Octobre 2025</time><div><b>Phase 2 de la MFA obligatoire</b><p>L'obligation s'étend aux outils en ligne de commande et aux opérations de gestion des ressources Azure (Azure CLI, PowerShell, API).</p></div></li>
+      <li><time>Mars 2026</time><div><b>Passkeys synchronisées</b><p>Entra ID prend en charge les passkeys synchronisées et les profils de passkeys, ainsi que le SSO sous Linux avec une MFA résistante à l'hameçonnage.</p></div></li>
+      <li><time>Avril 2026</time><div><b>Passkeys sous Windows</b><p>Les passkeys Entra arrivent sur Windows avec Windows Hello, et les campagnes d'inscription peuvent proposer une passkey aux utilisateurs lors de leur connexion.</p></div></li>
+      <li><time>Juillet 2026</time><div><b>Annonce : la passkey devient la méthode par défaut</b><p>Microsoft annonce que les passkeys remplaceront progressivement les SMS et appels vocaux comme méthode d'authentification par défaut.</p></div></li>
+      <li class="now"><time>1er sept. 2026</time><div><b>Déploiement des passkeys par défaut</b><p>Les utilisateurs qui utilisaient le SMS ou l'appel vocal sont activés automatiquement pour les passkeys et invités à en créer une à leur prochaine connexion.</p></div></li>
+      <li class="next"><time>Février 2027</time><div><b>Fin du SMS et de l'appel vocal</b><p>Retrait prévu de l'authentification par SMS et appel vocal sur l'ensemble des tenants. À suivre.</p></div></li>
+    </ol>
+
     <div class="cols" style="margin-top:40px">
       <div class="panel">
-        <h3>L'IA au service de la cybersécurité</h3>
-        <p>L'intelligence artificielle détecte automatiquement les menaces et les comportements anormaux sur un réseau. Des solutions comme Darktrace, Vectra AI ou Microsoft Defender s'appuient sur des algorithmes de machine learning pour repérer une attaque plus tôt qu'une analyse manuelle.</p>
+        <h3>Ce que j'en retiens</h3>
+        <p>La tendance est claire : Microsoft pousse vers une authentification <strong>sans mot de passe et résistante à l'hameçonnage</strong>. Une passkey repose sur la cryptographie à clé publique : aucun secret partagé ne circule, il n'y a donc rien à voler par un faux site.</p>
+        <p>Pour une collectivité comme la mairie, cela veut dire préparer les agents : inventorier ceux qui utilisent encore le SMS, vérifier la compatibilité des postes et des téléphones, et accompagner les utilisateurs au moment de créer leur passkey. C'est exactement le rôle du support.</p>
       </div>
-      <div class="panel">
-        <h3>…et entre de mauvaises mains</h3>
-        <p>Les attaquants utilisent aussi l'IA : e-mails d'hameçonnage rédigés avec ChatGPT, deepfakes produits avec des outils comme DeepFaceLab. L'IA renforce la cybersécurité, mais demande une gestion des risques rigoureuse et une supervision humaine.</p>
+      <div>
+        <h3>Mes outils de veille</h3>
+        <div class="tools" style="margin-top:14px">
+          <div class="tool"><b>Flux RSS</b><span>Feedly</span></div>
+          <div class="tool"><b>Blog officiel</b><span>Microsoft Entra Blog, page « What's new »</span></div>
+          <div class="tool"><b>Sites spécialisés</b><span>IT-Connect, 01net, Developpez.com, JDN</span></div>
+          <div class="tool"><b>Réseaux sociaux</b><span>X, LinkedIn</span></div>
+        </div>
+        <div class="src">
+          <a href="https://learn.microsoft.com/fr-fr/entra/fundamentals/whatis">Documentation Entra ID</a>
+          <a href="https://learn.microsoft.com/fr-fr/entra/fundamentals/whats-new">Nouveautés Entra</a>
+          <a href="https://www.it-connect.fr">IT-Connect</a>
+          <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-entra-id-gets-passkeys-default-authentication-starting-september/">BleepingComputer : passkeys par défaut</a>
+        </div>
       </div>
-    </div>
-    <div class="src">
-      <a href="https://www.01net.com">01net</a>
-      <a href="https://www.developpez.com">Developpez.com</a>
-      <a href="https://www.journaldunet.com">Journal du Net</a>
-      <a href="https://learn.microsoft.com/fr-fr/entra/fundamentals/whatis">Documentation Entra ID</a>
     </div>
   </div>
 </section>
