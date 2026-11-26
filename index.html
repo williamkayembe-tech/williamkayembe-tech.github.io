@@ -150,6 +150,10 @@ table.cmp td:first-child{color:var(--red);font-family:"JetBrains Mono",monospace
 .me{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .sheet{display:block;max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:2px;box-shadow:0 0 24px rgba(76,201,255,.15)}
 .sheet img{display:block;width:100%;height:auto}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(24px,4vw,56px);align-items:center}
+.me-photo{margin:0;justify-self:end;width:100%;max-width:300px;border:1px solid var(--red);border-radius:4px;overflow:hidden;box-shadow:0 0 0 6px rgba(76,201,255,.08),0 0 36px rgba(76,201,255,.3)}
+.me-photo img{display:block;width:100%;height:auto}
+@media(max-width:760px){.hgrid{grid-template-columns:minmax(0,1fr)}.me-photo{justify-self:start;max-width:220px;order:-1}}
 footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -173,7 +177,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </nav>
 
 <header class="hero" id="presentation">
-  <div class="wrap">
+  <div class="wrap hgrid">
+    <div>
     <p class="role">BTS SIO, option SISR · en alternance</p>
     <h1>William Kayembe</h1>
     <p class="lead">Étudiant à <b>Schola Nova</b> et technicien support en alternance au <b>service informatique de la mairie de Gennevilliers</b>, où j'accompagne au quotidien les agents de la ville.</p>
@@ -183,6 +188,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a class="btn" href="CV_William_Kayembe.pdf" target="_blank" rel="noopener">Mon CV</a>
       <a class="btn" href="https://www.linkedin.com/in/william-kayembe" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    </div>
+    <figure class="me-photo"><img src="photo_william.jpg" alt="Photo de William Kayembe" width="560" height="665"></figure>
   </div>
   <div class="scene" aria-hidden="true">
     <svg viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid meet">
