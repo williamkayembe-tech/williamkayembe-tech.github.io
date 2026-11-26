@@ -123,7 +123,7 @@ table.e5 td:first-child{font-size:14px;line-height:1.45}
 
 .vhero{display:grid;grid-template-columns:140px minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;margin-bottom:40px}
 .vhero p+p{margin-top:12px}.vhero h3{font-size:1.8rem;margin-bottom:12px}
-.idlogo{width:140px;height:140px;filter:drop-shadow(0 0 14px rgba(76,201,255,.35))}
+.idlogo{width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(76,201,255,.35))}
 .sub{font-size:1.35rem;margin:44px 0 18px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
 .f{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:2px}
@@ -366,7 +366,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="head"><h2>Veille technologique</h2><p>Sujet suivi : Microsoft Entra ID</p></div>
 
     <div class="vhero">
-      <svg class="idlogo" viewBox="0 0 120 120" aria-hidden="true">
+      <img class="idlogo" src="entra-logo.png" alt="Logo Microsoft Entra ID" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <svg class="idlogo" viewBox="0 0 120 120" aria-hidden="true" style="display:none">
         <defs><linearGradient id="kg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--slate)"/><stop offset="1" stop-color="var(--red)"/></linearGradient></defs>
         <path d="M60 8 L104 26 V58 C104 84 86 104 60 112 C34 104 16 84 16 58 V26 Z" fill="none" stroke="url(#kg)" stroke-width="4"/>
         <circle cx="60" cy="50" r="13" fill="none" stroke="var(--red)" stroke-width="4"/>
